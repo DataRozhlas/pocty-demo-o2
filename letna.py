@@ -31,7 +31,7 @@ headers = {
 
 #%%
 out = nested_dict()
-for hour in range(15, 20):
+for hour in range(15, 20): # hodiny pro stažení, koncovou hodinu uvádět +1
     for zsj in letna:
         for grp in gender:
             r = requests.get('https://developer.o2.cz/sociodemo/api/gender/' 
@@ -66,6 +66,3 @@ r = requests.get('https://developer.o2.cz/mobility/api/transit/550973/500186?uni
 ri = requests.get('https://developer.o2.cz/mobility/api/info', headers=headers)
 
 print('Z Brna-střed přijelo do Prahy 7 ' + ri.json()['backendDataFrom'] + ' ' + r.json()['count'] + ' lidí')
-
-#%%
-r = requests.get('https://developer.o2.cz/sociodemo/api/age/' + str(zsj) + '?g=' + grp + '&occurenceType=2&hour=' + str(hour), headers=headers)
